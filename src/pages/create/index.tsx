@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import { simpleQueez } from "@/utils/simpleQueez";
+import {Button} from '@nextui-org/button';
 
 function Create() {
   const [queez, setQueez] = useState(simpleQueez);
@@ -88,6 +89,7 @@ function Create() {
                 d. A Color
               </li>
             </ul> */}
+            <Button>Click me</Button>
           </div>
         </div>
       </div>
@@ -96,3 +98,4 @@ function Create() {
 }
 
 export default Create;
+
