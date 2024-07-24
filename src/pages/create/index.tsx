@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { simpleQueez } from "@/utils/simpleQueez";
 
-function index() {
+function Create() {
   const [queez, setQueez] = useState(simpleQueez);
 
   const cleanText = (text: string) => text.replace(/\s+/g, " ");
@@ -95,4 +95,4 @@ function index() {
   );
 }
 
-export default index;
+export default Create;
