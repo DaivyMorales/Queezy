@@ -8,12 +8,15 @@ import { RadioGroup, Radio } from "@nextui-org/radio";
 import { CustomRadio } from "../components/nextui/CustomRadio";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { HiMiniSparkles } from "react-icons/hi2";
+import QuestionCard from "../components/QuestionCard";
+import { useQueezStore } from "@/store/store";
 
 function Create() {
-  const [queez, setQueez] = useState(simpleQueez);
   const [loading, setLoading] = useState(false);
 
   const cleanText = (text: string) => text.replace(/\s+/g, " ");
+
+  const {dataQueez, setDataQueez} = useQueezStore()
 
   const formik = useFormik({
     initialValues: {
@@ -33,10 +36,9 @@ function Create() {
 
         const responseJson = JSON.parse(response.data);
 
-
-        setQueez(responseJson);
-        console.log(queez)
-        if (queez) {
+        setDataQueez(responseJson);
+        console.log(dataQueez);
+        if (dataQueez) {
           setLoading(false);
         }
       } catch (error) {
@@ -46,9 +48,9 @@ function Create() {
   });
 
   return (
-    <div className="flex w-full h-screen flex-col items-center justify-center gap-4 ">
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-4">
       {/* <h2>Create Quize</h2> */}
-      <div className="grid grid-cols-1  gap-4 px-10 lg:grid-cols-2 ">
+      <div className="grid grid-cols-1 gap-4 px-10 lg:grid-cols-2">
         <div className="flex flex-col gap-2">
           <form onSubmit={formik.handleSubmit} className="flex flex-col gap-3">
             <label htmlFor="">
@@ -58,7 +60,7 @@ function Create() {
               <textarea onChange={formik.handleChange} name="text"></textarea>
             </Card>
             <Button
-              isLoading={loading ?? loading }
+              isLoading={loading ?? loading}
               type="submit"
               color="primary"
               className="font-semibold"
@@ -143,24 +145,7 @@ function Create() {
               </div>
             </Card>
           ) : (
-            <Card className="h-[500px] w-[500px] overflow-y-scroll px-6 py-8">
-              <div className="flex flex-col gap-10">
-                {queez.map((question, index) => (
-                  <div key={question.question}>
-                    <RadioGroup>
-                      <h4 className="text-md font-semibold">
-                        {index + 1}. {question.question}
-                      </h4>
-                      {question.options.map((op, index) => (
-                        <CustomRadio size="sm" value={op}>
-                          {op}
-                        </CustomRadio>
-                      ))}
-                    </RadioGroup>
-                  </div>
-                ))}
-              </div>
-            </Card>
+            <QuestionCard />
           )}
         </div>
       </div>
