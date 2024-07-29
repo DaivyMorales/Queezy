@@ -18,9 +18,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Providers>
-        <div className={inter.className}>
+        <main className={`dark ${inter.className}`}>
           <Component {...pageProps} />
-        </div>
+        </main>
       </Providers>
     </SessionProvider>
   );
