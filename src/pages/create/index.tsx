@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
-import { simpleQueez } from "@/utils/simpleQueez";
 import { Button } from "@nextui-org/button";
-import { CheckboxGroup, Checkbox, Skeleton } from "@nextui-org/react";
-import { RadioGroup, Radio } from "@nextui-org/radio";
-import { CustomRadio } from "../components/nextui/CustomRadio";
-import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
+import { Skeleton } from "@nextui-org/react";
+import { Card } from "@nextui-org/card";
 import { HiMiniSparkles } from "react-icons/hi2";
 import QuestionCard from "../components/QuestionCard";
 import { useQueezStore } from "@/store/store";

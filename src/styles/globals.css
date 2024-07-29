@@ -18,7 +18,6 @@ h2 {
 textarea {
   @apply h-full w-full bg-transparent text-sm text-white;
   resize: none;
-  /* background-color: red; */
 }
 
 label {
